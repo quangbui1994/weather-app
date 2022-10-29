@@ -19,7 +19,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "CI=true react-scripts test --coverage --colors",
+    "test:dev": "react-scripts test --colors --watch",
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
