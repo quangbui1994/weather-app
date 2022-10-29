@@ -3,15 +3,15 @@ import { useState } from 'react'
 
 import axios from '../api/index'
 
-export const useAxios = (defaultParams: AxiosRequestConfig) => {
+export const useAxios = (defaultParams?: AxiosRequestConfig) => {
   const [response, setResponse] = useState<any>(undefined)
   const [error, setError] = useState<any>('')
   const [loading, setLoading] = useState<boolean>(false)
 
-  const fetch = async (params: AxiosRequestConfig = defaultParams) => {
+  const fetch = async (params: AxiosRequestConfig | undefined = defaultParams) => {
     try {
       setLoading(true)
-      const { data } = await axios.request(params)
+      const { data } = await axios.request(params!)
       setResponse(data)
     } catch (error) {
       setError(error)

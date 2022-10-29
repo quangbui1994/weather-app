@@ -1,0 +1,108 @@
+@import 'styles/index.scss';
+
+.WeatherResultItem {
+    width: 100%;
+    min-height: 157px;
+    display: flex;
+    flex-flow: wrap;
+    transform: all .2s ease;
+    position: relative;
+    backface-visibility: hidden;
+    border-bottom: 1px solid $fourth-grey-color;
+}
+
+.Item {
+    display: flex;
+    flex-flow: wrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 2rem;
+    min-height: 157px;
+    backface-visibility: hidden;
+    perspective: 150rem;
+    transition: all .2s ease;
+
+    *:after {
+        display: block;
+        content: "";
+        height: 3px;
+        width: 100%;
+        position: absolute;
+    }
+
+    &--front {
+        justify-content: space-between;
+        transform: rotateX(0deg);
+        margin-top: 2rem;
+        padding-right: 10rem;
+    }
+
+    &--back--user {
+        transform: rotateX(180deg);
+    }
+}
+
+.WeatherResultItem:hover .Item--front {
+    transform: rotateX(180deg);
+}
+
+.WeatherResultItem:hover .Item--back--user{
+    transform: rotateX(0deg);
+}
+
+.temp {
+    font-size: 5rem;
+    color: $secondary-light-color;
+}
+
+.description {
+    color: $secondary-light-color;
+}
+
+.detailResult {
+    color: $secondary-light-color;
+    display: flex;
+    align-items: center;
+    position: 'absolute'; 
+    right: '0'; 
+    top: '1rem';
+}
+
+.resultItem {
+    text-align: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.resultItem:not(:last-child) {
+    border-right: 1px solid $secondary-grey-color;
+}
+
+.itemInfo {
+    display: flex;
+    font-size: 1.2rem;
+    flex-flow: nowrap;
+    text-align: center;
+    justify-content: center;
+}
+
+@media (max-width: 799px) {
+    .Item {
+        display: block;
+    }
+    .WeatherResultItem {
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .resultItem {
+        padding: 0 .5rem;
+    }
+}
+
+
+
