@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/styled": "^11.10.5",
+    "@material-ui/system": "^4.12.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -10,9 +12,14 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@types/styled-components": "^5.1.26",
+    "@types/styled-system": "^5.1.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.55.0",
+    "styled-components": "^5.3.6",
+    "styled-system": "^5.1.5",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -28,7 +35,10 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,md}": ["yarn lint", "yarn format"]
+    "*.{js,jsx,ts,tsx,css,md}": [
+      "yarn lint",
+      "yarn format"
+    ]
   },
   "eslintConfig": {
     "extends": [

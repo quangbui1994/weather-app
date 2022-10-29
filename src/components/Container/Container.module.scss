@@ -1,0 +1,26 @@
+@import 'styles/index.scss';
+
+.Container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.sm {
+    max-width: $max-width-sm;
+}
+
+.md {
+    max-width: $max-width-md;
+}
+
+.lg {
+    max-width: $max-width-lg;
+}
+
+.xl {
+    max-width: $max-width-xl;
+}
