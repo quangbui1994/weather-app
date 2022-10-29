@@ -1,10 +1,13 @@
 import React, { useReducer } from 'react'
+import { isEmpty } from 'lodash'
 
 import Container from 'components/Container/Container'
 import Button from 'UI/Button/Button'
 import Input from 'UI/Input/Input'
 import styles from './SearchForm.module.scss'
 import Row from 'components/Row/Row'
+import { useAxios } from 'hooks/useAxios'
+import Spinner from 'UI/Spinner/Spinner'
 
 interface FormData {
   city: string
@@ -25,9 +28,15 @@ const formReducer = (state: FormData, event: React.ChangeEvent<HTMLInputElement>
 
 const SearchForm = () => {
   const [formData, setFormData] = useReducer(formReducer, INITIAL_DATA)
+  const { response, error, loading, fetch } = useAxios()
 
-  const submitHandler = () => {
-    console.log('click')
+  const submitHandler = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    fetch({
+      method: 'get',
+      url: `/weather?q=${formData.city},${formData.country}&appid=${process.env.REACT_APP_WEATHER_API}`,
+    })
   }
 
   return (
@@ -51,8 +60,11 @@ const SearchForm = () => {
             onChange={setFormData}
           />
         </Row>
-        <Button variant='primary'>See weather</Button>
+        <Button disabled={isEmpty(formData.city) || isEmpty(formData.country)} variant='primary'>
+          Check weather
+        </Button>
       </form>
+      {loading && <Spinner />}
     </Container>
   )
 }
