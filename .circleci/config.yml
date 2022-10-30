@@ -44,14 +44,14 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build:
+      - build-and-test:
           filters:
             branches:
               only:
                 - master
       - deploy:
           requires:
-            - build
+            - build-and-test
           filters:
             branches:
               only:
