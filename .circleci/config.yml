@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  build-and-test:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.13.2
@@ -26,6 +26,9 @@ jobs:
           root: .
           paths:
             - .
+      - run:
+          name: Unit tests
+          command: yarn test
   deploy:
     working_directory: ~/repo
     docker:
