@@ -47,7 +47,7 @@ const formReducer = (state: FormData, event: React.ChangeEvent<HTMLInputElement>
 
 const SearchForm: React.FC<FormProps> = ({ setData }) => {
   const [formData, setFormData] = useReducer(formReducer, INITIAL_DATA)
-  const { response, error, loading, fetch } = useAxios()
+  const { response, loading, fetch } = useAxios()
 
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault()

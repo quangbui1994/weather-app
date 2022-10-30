@@ -1,6 +1,3 @@
-import Container from 'components/Container/Container'
-import Header from 'components/Header/Header'
-import Row from 'components/Row/Row'
 import Icon from 'UI/Icon/Icon'
 
 interface BackProps {
