@@ -59,7 +59,6 @@ const SearchForm: React.FC<FormProps> = ({ setData }) => {
   }
 
   useEffect(() => {
-    console.log(response)
     if (response) {
       setData(parseData(response))
     }

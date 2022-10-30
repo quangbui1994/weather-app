@@ -4,7 +4,7 @@ import styles from './Button.module.scss'
 interface ButtonProps {
   children: React.ReactNode
   variant: ButtonVariant
-  disabled: boolean
+  disabled?: boolean
 }
 
 const Button: React.FC<ButtonProps> = ({ children, variant, disabled }) => {
