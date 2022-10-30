@@ -10,6 +10,7 @@ import { useAxios } from 'hooks/useAxios'
 import Spinner from 'UI/Spinner/Spinner'
 import { WeatherData } from 'types'
 import { useEffect } from 'react'
+import { parseData } from 'utils'
 
 interface FormData {
   city: string
@@ -17,25 +18,12 @@ interface FormData {
 }
 
 interface FormProps {
-  setData: React.Dispatch<WeatherData>
+  setData: React.Dispatch<WeatherData | undefined>
 }
 
 const INITIAL_DATA: FormData = {
   city: '',
   country: '',
-}
-
-const parseData = (data: any): WeatherData => {
-  return {
-    cityName: data.name,
-    temp: data.main.temp,
-    description: data.weather[0].main,
-    tempMin: data.main.temp_min,
-    tempMax: data.main.temp_max,
-    humidity: data.main.humidity,
-    windSpeed: data.wind.speed,
-    windDeg: data.wind.deg,
-  }
 }
 
 const formReducer = (state: FormData, event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +35,7 @@ const formReducer = (state: FormData, event: React.ChangeEvent<HTMLInputElement>
 
 const SearchForm: React.FC<FormProps> = ({ setData }) => {
   const [formData, setFormData] = useReducer(formReducer, INITIAL_DATA)
-  const { response, loading, fetch } = useAxios()
+  const { response, loading, fetch, error } = useAxios()
 
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -59,9 +47,7 @@ const SearchForm: React.FC<FormProps> = ({ setData }) => {
   }
 
   useEffect(() => {
-    if (response) {
-      setData(parseData(response))
-    }
+    setData(parseData(response))
   }, [response])
 
   return (
@@ -69,6 +55,7 @@ const SearchForm: React.FC<FormProps> = ({ setData }) => {
       <form className={styles.SearchForm} onSubmit={submitHandler}>
         <Row col={4}>
           <Input
+            error={error}
             name='city'
             placeHolder='City'
             label='City'

@@ -12,8 +12,10 @@ export const useAxios = (defaultParams?: AxiosRequestConfig) => {
       setLoading(true)
       const response = await WeatherService.requestWeather(params!)
       setResponse(response)
+      setError('')
     } catch (error) {
       setError(error)
+      setResponse(undefined)
     } finally {
       setLoading(false)
     }

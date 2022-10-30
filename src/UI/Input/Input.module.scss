@@ -35,3 +35,15 @@ Input:placeholder-shown + label {
     letter-spacing: .8px;
     margin-bottom: .8rem;
 }
+
+.inputWrapper {
+    position: relative;
+
+    p {
+        position: absolute;
+        color: white;
+        top: -25px;
+        left: 0;
+        font-size: 1.4rem;
+    }
+}
