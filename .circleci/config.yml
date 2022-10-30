@@ -22,6 +22,10 @@ jobs:
           key: app-build-cache-{{ .Branch }}
           paths:
             - ./build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   deploy:
     working_directory: ~/repo
     docker:
