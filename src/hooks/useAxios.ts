@@ -1,7 +1,6 @@
 import { AxiosRequestConfig } from 'axios'
 import { useState } from 'react'
-
-import axios from '../api/index'
+import WeatherService from 'services/weatherService'
 
 export const useAxios = (defaultParams?: AxiosRequestConfig) => {
   const [response, setResponse] = useState<any>(undefined)
@@ -11,8 +10,8 @@ export const useAxios = (defaultParams?: AxiosRequestConfig) => {
   const fetch = async (params: AxiosRequestConfig | undefined = defaultParams) => {
     try {
       setLoading(true)
-      const { data } = await axios.request(params!)
-      setResponse(data)
+      const response = await WeatherService.requestWeather(params!)
+      setResponse(response)
     } catch (error) {
       setError(error)
     } finally {
