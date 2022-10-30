@@ -13,4 +13,5 @@ export interface WeatherData {
   humidity: number
   windSpeed: number
   windDeg: number
+  unit: 'metric' | 'imperial'
 }

@@ -14,6 +14,11 @@ export const parseData = (data: any): WeatherData | undefined => {
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         windDeg: data.wind.deg,
+        unit: 'metric',
       }
     : undefined
 }
+
+export const convertCelsiusToFahrenheit = (degree: number) => degree * 1.8 + 32
+
+export const convertFahrenheitToCelsius = (degree: number) => ((degree - 32) * 5) / 9

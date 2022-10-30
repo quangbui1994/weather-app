@@ -19,6 +19,8 @@ interface FormData {
 
 interface FormProps {
   setData: React.Dispatch<WeatherData | undefined>
+  toggleDisabled: boolean
+  convertDegree: () => void
 }
 
 const INITIAL_DATA: FormData = {
@@ -33,7 +35,7 @@ const formReducer = (state: FormData, event: React.ChangeEvent<HTMLInputElement>
   }
 }
 
-const SearchForm: React.FC<FormProps> = ({ setData }) => {
+const SearchForm: React.FC<FormProps> = ({ setData, toggleDisabled, convertDegree }) => {
   const [formData, setFormData] = useReducer(formReducer, INITIAL_DATA)
   const { response, loading, fetch, error } = useAxios()
 
@@ -42,7 +44,7 @@ const SearchForm: React.FC<FormProps> = ({ setData }) => {
 
     fetch({
       method: 'get',
-      url: `/weather?q=${formData.city},${formData.country}&appid=${process.env.REACT_APP_WEATHER_API}`,
+      url: `/weather?q=${formData.city},${formData.country}&appid=${process.env.REACT_APP_WEATHER_API}&units=metric`,
     })
   }
 
@@ -72,8 +74,15 @@ const SearchForm: React.FC<FormProps> = ({ setData }) => {
             onChange={setFormData}
           />
         </Row>
-        <Button disabled={isEmpty(formData.city) || isEmpty(formData.country)} variant='primary'>
+        <Button
+          type='submit'
+          disabled={isEmpty(formData.city) || isEmpty(formData.country)}
+          variant='primary'
+        >
           Check weather
+        </Button>
+        <Button type='button' onClick={convertDegree} disabled={toggleDisabled} variant='primary'>
+          Convert degree
         </Button>
       </form>
       {loading && <Spinner />}

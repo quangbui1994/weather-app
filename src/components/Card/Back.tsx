@@ -1,15 +1,7 @@
+import { WeatherData } from 'types'
 import Icon from 'UI/Icon/Icon'
 
-interface BackProps {
-  cityName: string
-  temp: number
-  description: string
-  tempMin: number
-  tempMax: number
-  humidity: number
-  windSpeed: number
-  windDeg: number
-}
+type BackProps = WeatherData
 
 const Back: React.FC<BackProps> = ({
   cityName,
@@ -20,6 +12,7 @@ const Back: React.FC<BackProps> = ({
   humidity,
   windSpeed,
   windDeg,
+  unit,
 }) => {
   const itemBackStyles = ['Item', 'Item--back--user']
 
@@ -31,7 +24,9 @@ const Back: React.FC<BackProps> = ({
         </h2>
       </div>
       <div className='col-3-of-12'>
-        <div className='temp'>{temp}°</div>
+        <div className='temp'>
+          {temp}°{unit === 'metric' ? 'C' : 'F'}
+        </div>
         <div className='description'>{description}</div>
       </div>
       <div

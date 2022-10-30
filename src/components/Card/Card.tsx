@@ -8,7 +8,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
-  data: { cityName, temp, description, tempMax, tempMin, humidity, windSpeed, windDeg },
+  data: { cityName, temp, description, tempMax, tempMin, humidity, windSpeed, windDeg, unit },
 }) => {
   const itemStyles = ['WeatherResultItem', 'section']
 
@@ -23,8 +23,9 @@ const Card: React.FC<CardProps> = ({
         humidity={humidity}
         windSpeed={windSpeed}
         windDeg={windDeg}
+        unit={unit}
       />
-      <Front cityName={cityName} temp={Math.round(temp)} description={description} />
+      <Front cityName={cityName} temp={Math.round(temp)} description={description} unit={unit} />
     </div>
   )
 }
