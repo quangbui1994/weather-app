@@ -20,19 +20,6 @@ const Front: React.FC<FrontProps> = ({ cityName, temp, description, unit }) => (
       </Row>
     </Row>
   </div>
-  // <Container maxWidth="lg" className="Item Item--front">
-  //     <div className="col-6-of-12 cityName--back">
-  //         <h2 className="secondary__heading" style={{color: 'floralwhite'}}>{cityName}</h2>
-  //     </div>
-  //     <div className="col-1-of-12">
-  //         <div className="temp">
-  //             {temp}°
-  //         </div>
-  //         <div className="description">
-  //             {description}
-  //         </div>
-  //     </div>
-  // </Container>
 )
 
 export default Front
