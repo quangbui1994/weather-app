@@ -10,9 +10,17 @@ export const useAxios = (defaultParams?: AxiosRequestConfig) => {
   const fetch = async (params: AxiosRequestConfig | undefined = defaultParams) => {
     try {
       setLoading(true)
-      const response = await WeatherService.requestWeather(params!)
-      setResponse(response)
-      setError('')
+      const response = localStorage.getItem(params!.url!)
+
+      if (response) {
+        setResponse(JSON.parse(response))
+        setError('')
+      } else {
+        const response = await WeatherService.requestWeather(params!)
+        localStorage.setItem(params!.url!, JSON.stringify(response))
+        setResponse(response)
+        setError('')
+      }
     } catch (error) {
       setError(error)
       setResponse(undefined)

@@ -15,7 +15,7 @@ const Input: React.FC<InputProps> = ({ label, value, onChange, placeHolder, name
   return (
     <div className={styles.inputWrapper}>
       {error && (
-        <p>{capitalizeFirstLetter(error.response.data.message) ?? 'Something went wrong'}</p>
+        <p>{capitalizeFirstLetter(error?.response?.data?.message) ?? 'Something went wrong'}</p>
       )}
       <input
         name={name}
