@@ -35,7 +35,9 @@
     "prepare": "husky install",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc"
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc",
+    "docker:build": "docker build -t weather-app .",
+    "docker:run": "docker run -d -p 3000:3000 weather-app"
   },
   "jest": {
     "transform": {
@@ -46,7 +48,7 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,md}": [
+    "*.{js,jsx,ts,tsx,css,json}": [
       "yarn lint:fix",
       "yarn format"
     ]
