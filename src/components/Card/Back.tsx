@@ -29,10 +29,7 @@ const Back: React.FC<BackProps> = ({
         </div>
         <div className='description'>{description}</div>
       </div>
-      <div
-        className='detailResult col-9-of-12'
-        style={{ position: 'absolute', right: '0', top: '1rem' }}
-      >
+      <div className='detailResult col-9-of-12'>
         <div className='row col-3-of-12 resultItem'>
           <div className='col-12-of-12'>
             <Icon iconName='thermometer' size={5} />

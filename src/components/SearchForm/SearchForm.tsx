@@ -90,4 +90,4 @@ const SearchForm: React.FC<FormProps> = ({ setData, toggleDisabled, convertDegre
   )
 }
 
-export default SearchForm
+export default React.memo(SearchForm)
