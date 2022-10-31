@@ -7,6 +7,7 @@ jest.mock('hooks/useAxios')
 const mockUseAxios = useAxios as jest.MockedFunction<typeof useAxios>
 
 const setData = jest.fn()
+const convertDegree = jest.fn()
 
 describe('SearchForm', () => {
   it('should call weather api when users submit form', () => {
@@ -19,7 +20,9 @@ describe('SearchForm', () => {
       fetch,
     })
 
-    const wrapper = shallow(<SearchFrom setData={setData} />)
+    const wrapper = shallow(
+      <SearchFrom convertDegree={convertDegree} setData={setData} toggleDisabled={true} />,
+    )
     const form = wrapper.find('.SearchForm').at(0)
 
     expect(form.exists()).toBe(true)

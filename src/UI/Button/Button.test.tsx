@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 describe('Button', () => {
   it('should be disabled when props disabled is true', () => {
     const button = shallow(
-      <Button variant='primary' disabled={true}>
+      <Button type='submit' variant='primary' disabled={true}>
         Click
       </Button>,
     )
